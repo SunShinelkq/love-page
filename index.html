@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>祝福 · 小咩咩</title>
+  <meta name="description" content="愿你始终走在自己的节奏里，不被打扰，不被消耗。愿你所遇皆温柔，所行皆坦然。未来很长，祝你越来越好。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 音乐 -->
+  <audio id="bgm" src="bgm.mp3" preload="auto" loop></audio>
+  <button id="musicBtn" class="music-btn" aria-label="music">♪</button>
+
+  <!-- 进入前加载动画 -->
+  <div id="loader" class="loader">
+    <div class="loader-card">
+      <div class="loader-title">正在加载…</div>
+      <div class="loader-bar"><div id="loaderFill" class="loader-fill"></div></div>
+      <div id="loaderTip" class="loader-tip">为你准备一点点安静的祝福</div>
+    </div>
+  </div>
+
+  <!-- 玫瑰飘落画布 -->
+  <canvas id="petals"></canvas>
+
+  <!-- 主内容 -->
+  <main id="app" class="app hidden">
+    <section class="card" id="card">
+      <div class="title">小咩咩</div>
+
+      <!-- 文本将由 JS 逐行插入 -->
+      <div class="text" id="blessingText"></div>
+
+      <div class="hint">（文字会逐渐出现）</div>
+    </section>
+
+    <div id="toast" class="toast hidden"></div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
