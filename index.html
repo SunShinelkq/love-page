@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>祝福 · 小咩咩</title>
+  <meta name="description" content="愿你所遇皆温柔，所行皆坦然。未来很长，祝你越来越好。" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- 背景（两层交叉淡入） -->
+  <div id="bgA" class="bg"></div>
+  <div id="bgB" class="bg"></div>
+
+  <!-- 玫瑰飘落 -->
+  <canvas id="roses"></canvas>
+
+  <!-- 主内容 -->
+  <main class="wrap">
+    <section id="card" class="card">
+      <h1 class="name">小咩咩</h1>
+      <div id="lines" class="lines"></div>
+      <div class="tip">（点一下屏幕可播放音乐）</div>
+    </section>
+  </main>
+
+  <!-- 音乐按钮 -->
+  <button id="musicBtn" class="music" aria-label="music">♪</button>
+  <audio id="bgm" src="/love-page/bgm.mp3" preload="auto" loop></audio>
+
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
+
+  <script src="main.js"></script>
+</body>
+</html>
