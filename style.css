@@ -1,0 +1,171 @@
+*{box-sizing:border-box;}
+html,body{
+  margin:0;
+  height:100%;
+  overflow:hidden;
+  color:#f5f5f5;
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:#111;
+}
+
+/* 背景层 */
+.bg-layer{
+  position:fixed;
+  inset:0;
+  z-index:-2;
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  opacity:0;
+  transform:scale(1);
+  transition:opacity 3s ease;
+  will-change:transform, opacity, filter;
+}
+
+.bg-layer.show{
+  opacity:1;
+  animation:directorMove 26000ms ease-in-out forwards;
+}
+
+/* 极柔镜头 */
+@keyframes directorMove{
+  0%{transform:scale(1) translate(0,0); filter:brightness(1);}
+  50%{transform:scale(1.012) translate(calc(var(--tx)*.55), calc(var(--ty)*.55)); filter:brightness(1.015);}
+  100%{transform:scale(1.025) translate(var(--tx), var(--ty)); filter:brightness(1.02);}
+}
+
+/* 强呼吸 */
+@keyframes directorMoveStrong{
+  0%{transform:scale(1) translate(0,0); filter:brightness(1);}
+  50%{transform:scale(1.03) translate(calc(var(--tx)*1.2), calc(var(--ty)*1.2)); filter:brightness(1.06);}
+  100%{transform:scale(1.06) translate(calc(var(--tx)*1.6), calc(var(--ty)*1.6)); filter:brightness(1.08);}
+}
+
+body.strong-breath .bg-layer.show{
+  animation:directorMoveStrong 10000ms ease-in-out forwards;
+}
+
+/* 玫瑰 */
+#petals{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+}
+
+/* 主内容 */
+.app{
+  position:relative;
+  z-index:1;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  transition:opacity .8s ease;
+}
+.hidden{opacity:0;pointer-events:none;}
+
+.card{
+  width:min(560px,92vw);
+  text-align:center;
+}
+
+.title{
+  font-size:22px;
+  margin-bottom:16px;
+  text-shadow:0 6px 30px rgba(0,0,0,.8);
+}
+
+.text{
+  font-size:15px;
+  line-height:1.9;
+  text-shadow:0 6px 30px rgba(0,0,0,.8);
+}
+
+.line{
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity 1s ease,transform 1s ease;
+}
+.line.show{opacity:1;transform:translateY(0);}
+
+.hint{margin-top:12px;font-size:12px;opacity:.6;}
+
+.loader{
+  position:fixed;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(15,15,20,.9);
+  transition:opacity 1.2s ease;
+}
+
+.loader-card{
+  width:min(420px,86vw);
+  padding:20px;
+  border-radius:18px;
+  background:rgba(255,255,255,.05);
+}
+
+.loader-bar{
+  height:8px;
+  background:rgba(255,255,255,.15);
+  border-radius:999px;
+  overflow:hidden;
+}
+
+.loader-fill{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#c58cff,#ff6b9f);
+}
+
+.music-btn{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:46px;
+  height:46px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.4);
+  color:#fff;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:80px;
+  transform:translateX(-50%);
+  padding:8px 16px;
+  background:rgba(0,0,0,.6);
+  border-radius:20px;
+  opacity:0;
+  transition:.4s;
+}
+.toast.show{opacity:1;}
+
+/* 颗粒 */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  pointer-events:none;
+  opacity:.05;
+  background-image:url("data:image/svg+xml,\
+<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'>\
+<filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter>\
+<rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+/* 暗角 */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9998;
+  background:radial-gradient(circle at center, rgba(0,0,0,0) 58%, rgba(0,0,0,.16) 100%);
+}
